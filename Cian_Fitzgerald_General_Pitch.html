@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cian Fitzgerald QFA — Financial Advisor | Wealth Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #1E3A5F;
+    --blue: #1F8CEB;
+    --gold: #C9A84C;
+    --gold-soft: #FBF7EE;
+    --accent: #FF6B35;
+    --text: #0A1628;
+    --muted: #5A6B7E;
+    --light: #8A9BAE;
+    --surface: #F4F7FB;
+    --white: #ffffff;
+    --border: #E2EAF4;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 80px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 28px; height: 28px; background: var(--gold); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: white; font-weight: 700; font-family: 'Fraunces', serif; }
+  .nav-title { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: white; }
+
+  /* HERO */
+  .hero { background: var(--navy); padding-top: 60px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -100px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(31,140,235,0.1) 0%, transparent 65%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+  .hero-left { padding: 80px 60px 80px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: #E8C96A; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #E8C96A; }
+  .hero-name { font-family: 'Fraunces', serif; font-size: clamp(42px, 5vw, 64px); font-weight: 700; color: white; line-height: 1.05; margin-bottom: 16px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-name span { color: #E8C96A; }
+  .hero-credential { font-size: 16px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 8px; animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-location { font-size: 13px; color: rgba(255,255,255,0.28); margin-bottom: 40px; animation: fadeUp 0.6s 0.18s ease both; }
+  .hero-pitch { font-family: 'Fraunces', serif; font-size: clamp(17px, 2vw, 22px); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.78); line-height: 1.55; border-left: 3px solid var(--accent); padding-left: 24px; margin-bottom: 48px; animation: fadeUp 0.6s 0.25s ease both; max-width: 480px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.6s 0.35s ease both; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 500; transition: all 0.2s; }
+  .btn-primary:hover { background: #B8973E; transform: translateY(-1px); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); color: rgba(255,255,255,0.7); text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 14px; transition: all 0.2s; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.13); }
+
+  .hero-right { background: var(--navy-mid); display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative; overflow: hidden; animation: fadeIn 0.8s 0.5s ease both; }
+  .hero-right::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(31,140,235,0.15) 0%, transparent 70%); }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; position: relative; z-index: 2; }
+  .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 26px 22px; border-radius: 12px; transition: all 0.3s; }
+  .stat-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  .stat-number { font-family: 'Fraunces', serif; font-size: 34px; font-weight: 700; color: white; line-height: 1; margin-bottom: 6px; }
+  .stat-number span { color: #E8C96A; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.4; }
+
+  /* EXPERTISE BAR */
+  .expertise-bar { background: linear-gradient(135deg, #1F8CEB 0%, #0A4D8C 100%); padding: 22px 80px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .exp-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; flex-shrink: 0; }
+  .exp-pill { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); color: white; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 100px; }
+
+  /* SECTIONS */
+  section { padding: 100px 80px; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(30px, 3.8vw, 46px); font-weight: 600; color: var(--text); line-height: 1.15; margin-bottom: 20px; }
+  .section-intro { font-size: 17px; color: var(--muted); max-width: 640px; line-height: 1.7; margin-bottom: 60px; }
+
+  /* THREE THINGS */
+  .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .three-card { background: var(--surface); border-radius: 16px; padding: 32px; border: 1px solid transparent; transition: all 0.3s; }
+  .three-card:hover { border-color: var(--blue); background: white; transform: translateY(-4px); box-shadow: 0 20px 60px rgba(31,140,235,0.1); }
+  .three-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(31,140,235,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px; }
+  .three-num { font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; margin-bottom: 10px; }
+  .three-title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .three-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* WHO FOR */
+  .for-section { background: var(--navy); }
+  .for-section .section-title { color: white; }
+  .for-section .section-label { color: #E8C96A; }
+  .for-section .section-intro { color: rgba(255,255,255,0.45); }
+  .for-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .for-card { border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .for-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+  .for-card:hover::before { transform: scaleX(1); }
+  .for-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.04); }
+  .for-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #E8C96A; background: rgba(201,168,76,0.1); padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; }
+  .for-title { font-size: 15px; font-weight: 600; color: white; margin-bottom: 10px; line-height: 1.4; }
+  .for-body { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.7; }
+
+  /* EXPERIENCE */
+  .exp-section { background: var(--surface); }
+  .job { background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--border); margin-bottom: 20px; transition: all 0.3s; }
+  .job:hover { border-color: var(--blue); box-shadow: 0 12px 40px rgba(31,140,235,0.08); }
+  .job-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 6px; gap: 20px; }
+  .job-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--text); }
+  .job-dates { font-size: 12px; color: var(--blue); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; padding-top: 4px; }
+  .job-company { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+  .job-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .job-bullets li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .job-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 8px; }
+  .job-bullets li strong { color: var(--text); font-weight: 500; }
+  .promo-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(31,140,235,0.07); border: 1px solid rgba(31,140,235,0.2); color: var(--blue); font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 100px; margin-top: 16px; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .edu-card { background: white; border-radius: 14px; padding: 28px; border: 1px solid var(--border); transition: all 0.3s; }
+  .edu-card:hover { border-color: var(--gold); box-shadow: 0 10px 40px rgba(201,168,76,0.1); transform: translateY(-2px); }
+  .edu-icon { font-size: 24px; margin-bottom: 14px; }
+  .edu-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .edu-org { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .edu-year { font-size: 11px; color: var(--blue); font-weight: 500; letter-spacing: 0.06em; }
+
+  /* LETTER */
+  .letter-section { background: var(--gold-soft); }
+  .letter-card { background: white; border-radius: 20px; padding: 60px; max-width: 800px; margin: 0 auto; border: 1px solid rgba(201,168,76,0.2); box-shadow: 0 30px 80px rgba(201,168,76,0.08); }
+  .letter-salutation { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+  .letter-body p { font-size: 16px; color: var(--text); line-height: 1.85; margin-bottom: 22px; }
+  .letter-body p strong { color: var(--blue); font-weight: 500; }
+  .letter-sign { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .letter-sign-name { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .letter-sign-title { font-size: 13px; color: var(--muted); }
+
+  /* FOOTER */
+  .footer { background: var(--navy); padding: 100px 80px; text-align: center; }
+  .footer .section-title { color: white; margin-bottom: 16px; }
+  .footer .section-intro { color: rgba(255,255,255,0.4); margin: 0 auto 40px; text-align: center; }
+  .footer-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .footer-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11); color: rgba(255,255,255,0.7); padding: 12px 24px; border-radius: 100px; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+  .footer-pill:hover { background: rgba(255,255,255,0.12); color: white; }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  #pw-gate { position: fixed; inset: 0; z-index: 9999; background: #0A1628; display: flex; align-items: center; justify-content: center; }
+  #pw-gate.hidden { display: none; }
+  .pw-box { background: #1E3A5F; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 52px 48px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
+  .pw-logo { width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: white; margin: 0 auto 24px; }
+  .pw-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: white; margin-bottom: 8px; }
+  .pw-sub { font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 32px; line-height: 1.5; }
+  .pw-input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: white; text-align: center; letter-spacing: 0.1em; outline: none; font-family: 'DM Sans', sans-serif; margin-bottom: 12px; transition: border-color 0.2s; }
+  .pw-input::placeholder { color: rgba(255,255,255,0.2); letter-spacing: 0; }
+  .pw-input:focus { border-color: var(--gold); }
+  .pw-btn { width: 100%; background: var(--gold); color: white; border: none; border-radius: 10px; padding: 14px; font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+  .pw-btn:hover { background: #B8973E; }
+  .pw-btn:active { transform: scale(0.98); }
+  .pw-error { font-size: 12px; color: #F87171; margin-top: 10px; min-height: 18px; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-8px)} 40%{transform:translateX(8px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(5px)} }
+  .pw-shake { animation: shake 0.4s ease; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; } .hero-right { display: none; }
+    .hero-left { padding: 100px 32px 80px; } section { padding: 70px 32px; }
+    .expertise-bar { padding: 20px 32px; } .three-grid, .for-grid, .edu-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 24px; } .nav-links { display: none; }
+    .footer { padding: 70px 32px; } .letter-card { padding: 36px 24px; }
+    .job-header { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">CF</div>
+    <span class="nav-title">Cian Fitzgerald QFA — Financial Advisor</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">What I bring</a></li>
+    <li><a href="#who">Who this is for</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#letter">Letter</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">Qualified Financial Advisor · Open to Opportunities</div>
+      <h1 class="hero-name">Cian<br><span>Fitzgerald</span><br>QFA</h1>
+      <p class="hero-credential">Financial Advisor · Investment Operations Specialist</p>
+      <p class="hero-location">📍 Dublin, Ireland &nbsp;·&nbsp; Open to Irish, UK & International roles</p>
+      <p class="hero-pitch">"QFA qualified. Two years executing high-value institutional transactions. Ready to bring that depth directly to your clients — from day one."</p>
+      <div class="hero-cta">
+        <a href="mailto:cianfitzgerald7@gmail.com" class="btn-primary">✉ Get in touch</a>
+        <a href="#what" class="btn-ghost">See what I bring</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number"><span>QFA</span></div>
+          <div class="stat-label">Qualified Financial Advisor — LIA certified January 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>2</span>+ yrs</div>
+          <div class="stat-label">Live investment operations — Bloomberg, custodians, high-value transactions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2.<span>1</span></div>
+          <div class="stat-label">Honours Commerce, University College Dublin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">↑ <span>'24</span></div>
+          <div class="stat-label">Promoted from Graduate Programme — high performance recognition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERTISE BAR -->
+<div class="expertise-bar">
+  <span class="exp-label">Core skills</span>
+  <span class="exp-pill">QFA Qualified</span>
+  <span class="exp-pill">Bloomberg Execution</span>
+  <span class="exp-pill">Portfolio Bond Dealing</span>
+  <span class="exp-pill">Custodian Management</span>
+  <span class="exp-pill">Financial Markets</span>
+  <span class="exp-pill">Client Relationship</span>
+  <span class="exp-pill">Investment Operations</span>
+  <span class="exp-pill">FinTech & Banking Systems</span>
+</div>
+
+<!-- WHAT I BRING -->
+<section id="what">
+  <div class="section-label reveal">What I bring</div>
+  <h2 class="section-title reveal">Three things that make this<br>profile unusual.</h2>
+  <p class="section-intro reveal">Most candidates at this career stage have either the qualification or the experience. Cian has both — plus the character to build lasting client relationships.</p>
+  <div class="three-grid">
+    <div class="three-card reveal">
+      <div class="three-icon">📋</div>
+      <div class="three-num">01</div>
+      <h3 class="three-title">QFA qualified — deployable from day one</h3>
+      <p class="three-body">Fully certified by the LIA as a Qualified Financial Advisor since January 2025. Regulated to advise clients on life assurance, pensions, savings, investments, and mortgages in Ireland and the UK. No waiting period, no supervision cost, no onboarding delay. Ready to sit in front of clients and add value from the first week.</p>
+    </div>
+    <div class="three-card reveal">
+      <div class="three-icon">📊</div>
+      <div class="three-num">02</div>
+      <h3 class="three-title">Rare institutional depth for this stage</h3>
+      <p class="three-body">Two years executing high-value investment transactions in a live institutional environment — Bloomberg execution, custodian relationships, portfolio bond dealing, client cash management. Most advisors never see this side of the business. Cian has operated in it daily, which means he understands how financial products work at a level that builds genuine client credibility.</p>
+    </div>
+    <div class="three-card reveal">
+      <div class="three-icon">🎯</div>
+      <div class="three-num">03</div>
+      <h3 class="three-title">Ambitious, hungry, and a long-term bet</h3>
+      <p class="three-body">Promoted from the Graduate Programme at Utmost after 18 months. Actively manages his own investment portfolio. Follows financial markets, podcasts and analysis in his own time. Coaches youth rugby. Participates annually in the Peter McVerry Trust sleepout. The combination of technical ability, genuine curiosity, and character is what turns a good advisor into a great one over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO FOR -->
+<section id="who" class="for-section">
+  <div class="section-label reveal">Who this is for</div>
+  <h2 class="section-title reveal">The right firm for this conversation.</h2>
+  <p class="section-intro reveal">This page makes most sense if your firm fits one of these three profiles.</p>
+  <div class="for-grid">
+    <div class="for-card reveal">
+      <span class="for-tag">Wealth Management</span>
+      <div class="for-title">Irish or UK wealth manager looking for a QFA-qualified junior advisor</div>
+      <div class="for-body">You need someone who can advise clients on regulated products now — not in 12 months when they finish their exams. QFA certified, UCD commerce degree, two years of institutional investment experience. The profile is rare at this level.</div>
+    </div>
+    <div class="for-card reveal">
+      <span class="for-tag">Private Banking</span>
+      <div class="for-title">Private bank or boutique seeking client-facing talent with back-office depth</div>
+      <div class="for-body">Cian has spent two years as the bridge between operations, custodians, and clients. He understands how transactions work end-to-end. That context — knowing what happens after advice is given — makes for a more credible, more reliable client relationship manager.</div>
+    </div>
+    <div class="for-card reveal">
+      <span class="for-tag">Remote / Hybrid</span>
+      <div class="for-title">International firm open to a Dublin-based advisor working remotely or hybrid</div>
+      <div class="for-body">Based in Dublin but open to UK and international opportunities where the role can be performed remotely or with occasional travel. Experienced using banking technology platforms and comfortable operating across jurisdictions. The QFA covers regulated advice in Ireland and the UK.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-section">
+  <div class="section-label reveal">Professional experience</div>
+  <h2 class="section-title reveal">Two years in live investment operations.</h2>
+  <p class="section-intro reveal">Not theoretical knowledge — real execution in a demanding institutional environment, promoted for high performance.</p>
+
+  <div class="job reveal">
+    <div class="job-header">
+      <div class="job-title">Administrator — PB & EMC Dealing</div>
+      <div class="job-dates">Jan 2023 – Present</div>
+    </div>
+    <div class="job-company">Utmost Pan Europe DAC &nbsp;·&nbsp; Dublin, Ireland &nbsp;·&nbsp; Investment Operations</div>
+    <ul class="job-bullets">
+      <li><div><strong>Transaction Execution:</strong> Executes and processes high-value transactions across multiple books of business and financial instruments daily.</div></li>
+      <li><div><strong>Bloomberg Execution:</strong> Performs Bloomberg execution to support investment operations — the platform used by professional investors globally.</div></li>
+      <li><div><strong>Client Cash & Custodians:</strong> Oversees client cash management and custodian relationships, ensuring accuracy and compliance across all positions.</div></li>
+      <li><div><strong>Banking Systems:</strong> Utilises internal and external banking software platforms to ensure seamless financial operations.</div></li>
+      <li><div><strong>Client Query Resolution:</strong> Handles client queries and serves as the internal point of contact for dealing-related issues — resolving problems efficiently and escalating where necessary.</div></li>
+      <li><div><strong>Cross-Functional Collaboration:</strong> Collaborates with business partners, custodians, and fund administrators for trade execution and settlement.</div></li>
+      <li><div><strong>Sales Support:</strong> Supports sales teams by providing back-office expertise on open financial products — bridging operations and advisory functions.</div></li>
+      <li><div><strong>Technology & Innovation:</strong> Assists in technological advancements through engagement with project teams.</div></li>
+    </ul>
+    <div class="promo-badge">⭐ Promoted from Graduate Programme — July 2024 · High performance recognition</div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section style="background: var(--white);">
+  <div class="section-label reveal">Education & Qualifications</div>
+  <h2 class="section-title reveal">The credentials that matter.</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-icon">📜</div>
+      <div class="edu-title">Qualified Financial Advisor (QFA)</div>
+      <div class="edu-org">Life Insurance Association (LIA), Ireland</div>
+      <div class="edu-year">Certified January 2025</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🏛️</div>
+      <div class="edu-title">Bachelor of Commerce — 2.1 Honours</div>
+      <div class="edu-org">University College Dublin</div>
+      <div class="edu-year">2019 – 2022</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">📊</div>
+      <div class="edu-title">Bloomberg Terminal</div>
+      <div class="edu-org">Professional daily use in live investment operations</div>
+      <div class="edu-year">2023 – Present</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🏫</div>
+      <div class="edu-title">Leaving Certificate — 509 Points</div>
+      <div class="edu-org">Belvedere College, Dublin</div>
+      <div class="edu-year">2013 – 2019</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🏉</div>
+      <div class="edu-title">Senior Cup Rugby & Youth Coaching</div>
+      <div class="edu-org">Belvedere College · Ratoath RFC</div>
+      <div class="edu-year">Leadership & Community — Ongoing</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🤲</div>
+      <div class="edu-title">Peter McVerry Trust Sleepout</div>
+      <div class="edu-org">Focus Ireland — Annual Alumni Participation</div>
+      <div class="edu-year">Community Commitment — Ongoing</div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter" class="letter-section">
+  <div class="section-label reveal" style="text-align:center">A direct note</div>
+  <h2 class="section-title reveal" style="text-align:center; margin-bottom:48px;">To the CEO or Hiring Leader</h2>
+  <div class="letter-card reveal">
+    <p class="letter-salutation">Dear [CEO / Hiring Leader],</p>
+    <div class="letter-body">
+      <p>I am reaching out directly because I believe the combination of qualifications, experience, and genuine passion I bring is genuinely unusual at this stage of a career — and I'd rather make that case directly than wait for the right job posting to appear.</p>
+      <p>I am a Qualified Financial Advisor with a 2.1 Commerce degree from University College Dublin and over two years of experience in live investment operations at Utmost Pan Europe DAC — one of Ireland's leading life assurance and investment companies. In that role I execute high-value transactions daily across multiple financial instruments, perform Bloomberg execution, manage custodian relationships, and serve as the internal point of contact for dealing issues across the business. I was promoted from the Graduate Programme in July 2024 in recognition of high performance. <strong>I understand how financial products work end-to-end, at an institutional level, before I've even sat in front of my first advisory client.</strong></p>
+      <p>Most advisors at my career stage have either done their exams or worked in operations. Very few have done both. <strong>The QFA means I can advise clients on regulated products from day one — no delay, no supervision cost.</strong> The operations background means I have a level of product and market knowledge that most junior advisors spend years acquiring.</p>
+      <p>Beyond the technical credentials, I'd point to what drives me outside of work. I actively manage my own investment portfolio. I follow financial markets, podcasts, and analysis out of genuine interest. I coach youth rugby. I participate each year in the Peter McVerry Trust and Focus Ireland sleepout. <strong>I want to build a long career as a trusted financial advisor — the kind that works with clients across generations.</strong> I'm looking for the right firm to start that journey with.</p>
+      <p>I would welcome a conversation at your convenience. I'm based in Dublin and open to Irish, UK, and international opportunities where remote or hybrid working is possible.</p>
+    </div>
+    <div class="letter-sign">
+      <div class="letter-sign-name">Cian Fitzgerald</div>
+      <div class="letter-sign-title">QFA &nbsp;·&nbsp; Dublin, Ireland &nbsp;·&nbsp; cianfitzgerald7@gmail.com &nbsp;·&nbsp; 087 937 3669</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section id="contact" class="footer">
+  <div class="section-label" style="display:flex; justify-content:center; margin-bottom:16px; color:#E8C96A">Get in touch</div>
+  <h2 class="section-title">Available for interview at short notice.</h2>
+  <p class="section-intro">QFA qualified. Dublin-based. Open to Irish, UK and international wealth management roles — remote or hybrid considered.</p>
+  <div class="footer-row reveal">
+    <a href="mailto:cianfitzgerald7@gmail.com" class="footer-pill">✉ cianfitzgerald7@gmail.com</a>
+    <a href="tel:+353879373669" class="footer-pill">📞 087 937 3669</a>
+    <a href="https://www.linkedin.com/in/cian-fitzgerald-264895256" target="_blank" class="footer-pill">in LinkedIn</a>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<div id="pw-gate">
+  <div class="pw-box" id="pw-box">
+    <div class="pw-logo">CF</div>
+    <div class="pw-title">Private page</div>
+    <div class="pw-sub">This page is shared privately.<br>Enter the password to continue.</div>
+    <input type="password" id="pw-input" class="pw-input" placeholder="Enter password" autocomplete="off" onkeydown="if(event.key==='Enter') checkPw()"/>
+    <button class="pw-btn" onclick="checkPw()">View page →</button>
+    <div class="pw-error" id="pw-error"></div>
+  </div>
+</div>
+<script>
+(function() {
+  const CORRECT = 'Fitz27';
+  const KEY = 'cf_general_auth';
+  if (sessionStorage.getItem(KEY) === '1') document.getElementById('pw-gate').classList.add('hidden');
+  window.checkPw = function() {
+    const val = document.getElementById('pw-input').value.trim().replace(/\s+/g,'');
+    if (val.toLowerCase() === CORRECT.toLowerCase()) {
+      sessionStorage.setItem(KEY, '1');
+      const gate = document.getElementById('pw-gate');
+      gate.style.opacity = '0'; gate.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => gate.classList.add('hidden'), 400);
+    } else {
+      document.getElementById('pw-error').textContent = 'Incorrect password. Please try again.';
+      const box = document.getElementById('pw-box');
+      box.classList.remove('pw-shake'); void box.offsetWidth; box.classList.add('pw-shake');
+      document.getElementById('pw-input').value = ''; document.getElementById('pw-input').focus();
+    }
+  };
+})();
+</script>
+</body>
+</html>
